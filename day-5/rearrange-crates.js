@@ -46,9 +46,9 @@ for (let i = 0; i < formattedData.length; i++) {
 }
 
 // Get the answer by logging the first element of each array in the crate stacks
-console.log('The answer to challenge one:')
-for (let i = 0; i  < crateStacks.length; i++) {
-  console.log(crateStacks[i].at(-1))
+console.log("The answer to challenge one:");
+for (let i = 0; i < crateStacks.length; i++) {
+  console.log(crateStacks[i].at(-1));
 }
 
 // Challenge two
@@ -68,16 +68,16 @@ const anotherCrateStack = [
 const crateMover9001 = (amount, start, end) => {
   /* Determine the array of the crate stacks that the crate must be moved from 
   and slice off the amount of crates moved from the end, save it in a variable */
-  let removedCrates = anotherCrateStack[start - 1].slice(-(amount));
-  anotherCrateStack[start - 1].slice(-(amount));
+  let removedCrates = anotherCrateStack[start - 1].slice(-amount);
+  anotherCrateStack[start - 1].slice(-amount);
 
   // Iterate over each removed crate from a stack and add it to the other stack in order
   for (let i = 0; i < removedCrates.length; i++) {
     /* Remove the amount of crates being moved from the end of the array where the 
     crates are being moved from */
-    anotherCrateStack[start - 1].pop()
+    anotherCrateStack[start - 1].pop();
     // Move to new stack
-    anotherCrateStack[end - 1].push(removedCrates[i])
+    anotherCrateStack[end - 1].push(removedCrates[i]);
   }
 };
 
@@ -90,7 +90,7 @@ for (let i = 0; i < formattedData.length; i++) {
 }
 
 // Get the answer by logging the first element of each array in the crate stacks
-console.log('The answer to challenge two:')
-for (let i = 0; i  < anotherCrateStack.length; i++) {
-  console.log(anotherCrateStack[i].at(-1))
+console.log("The answer to challenge two:");
+for (let i = 0; i < anotherCrateStack.length; i++) {
+  console.log(anotherCrateStack[i].at(-1));
 }
