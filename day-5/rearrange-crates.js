@@ -12,4 +12,8 @@ const crateStacks = [
   [M,N,Z,W]
 ]
 
+// Challenge one
+
+const formattedData = []
+
 // Remove 'move' 'from' and 'to' from my data so I am left with 3 input numbers. 
