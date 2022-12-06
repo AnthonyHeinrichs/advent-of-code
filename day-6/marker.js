@@ -10,7 +10,7 @@ const findUnique = (arr, num) => {
     /* Slice out the next four elements in our array, starting from 0 and increasing by 1 
     comparing if this slice of four elements is unique, if it is unique, 
     return our iteration value + 4 */
-    if (new Set(arr.slice(i, i + num)).size == arr.slice(i, i + num).length) {
+    if (new Set(arr.slice(i, i + num)).size == num) {
       return console.log(i + num);
     }
   }
