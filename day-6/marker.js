@@ -2,27 +2,18 @@
 const markerCode = require("./data/marker-data");
 
 // Challenge one
-
 // Set up a new function that takes an array
-const findUnique = (arr, num) => {
+const findUnique = (arr, num, chall) => {
   // Loop through the array
   for (let i = 0; i < arr.length; i++) {
-    /* Slice out the next four elements in our array, starting from 0 and increasing by 1 
-    comparing if this slice of four elements is unique, if it is unique, 
-    return our iteration value + 4 */
+    // If length of unqiue values equals our passed num, return iteration value plus num
     if (new Set(arr.slice(i, i + num)).size == num) {
-      return console.log(i + num);
+      return console.log(`Answer to challenge ${chall}:`, i + num);
     }
   }
 };
-
-console.log("Answer to first challenge:");
-findUnique(markerCode, 4);
+findUnique(markerCode, 4, 1);
 
 // Challenge two
-
-/* All I had to do for this challenge was update my above function to take in a unique 
-num that we reference for our unique char check */
-
-console.log("Answer to second challenge:");
-findUnique(markerCode, 14);
+// Updated above function to take in a num to check on for unique values
+findUnique(markerCode, 14, 2);
