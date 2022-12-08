@@ -109,7 +109,7 @@ for (let y = 0; y < splitTrees.length; y++) {
     }
 
     // Get all visible trees above the node
-    for (let i = y - 1; i >= 0; i--){
+    for (let i = y - 1; i >= 0; i--) {
       top++;
       if (splitTrees[i][x] >= splitTrees[y][x]) {
         break;
@@ -130,4 +130,4 @@ for (let y = 0; y < splitTrees.length; y++) {
   }
 }
 
-console.log('Answer to challenge two:', Math.max(...scores));
+console.log("Answer to challenge two:", Math.max(...scores));
