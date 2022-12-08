@@ -68,7 +68,7 @@ console.log("Answer to challenge one:", total);
 
 // Challenge two
 
-const totalsArray = []
+const totalsArray = [];
 
 // Add all our totals to an array so we can itterate over each
 Object.keys(directories).forEach((key) => {
@@ -78,14 +78,14 @@ Object.keys(directories).forEach((key) => {
 /* I got the required space number by changing line 33 above so that all 
 children nodes that have been counted already get zeroed out so I could get 
 the total amount of space my device is taking up. I have changed line 33 
-back so challenge 1 still shows the correct answer */ 
+back so challenge 1 still shows the correct answer */
 
 // Calculation 300k - (700k - total amount space taken up)
-let requiredSpace = 1272621
+let requiredSpace = 1272621;
 
 // Find the number in our array of directories that is closed to our required space
 const closest = totalsArray.reduce((a, b) => {
   return Math.abs(b - requiredSpace) < Math.abs(a - requiredSpace) ? b : a;
 });
 
-console.log('Answer to challenge two:', closest)
+console.log("Answer to challenge two:", closest);
