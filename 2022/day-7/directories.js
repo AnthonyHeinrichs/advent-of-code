@@ -1,5 +1,7 @@
 const terminalData = require("./data/terminal-data");
 
+// Challenge one
+
 // Setup our variables that we will reference for past and present directory
 let pastDirectory = "directory1";
 let currentDirectory = "directory1";
@@ -32,7 +34,7 @@ for (let i = 0; i < terminalData.length; i++) {
         from that directory already */
         touchedDir.pop();
       } else {
-        // Set out past diretory to our current directory, which is the parent directory
+        // Set our past diretory to our current directory, which is the parent directory
         pastDirectory = currentDirectory;
         // Create the child object key and values so we can reference it later
         currentDirectory = `directory${i}`;
@@ -62,4 +64,28 @@ Object.keys(directories).forEach((key) => {
   }
 });
 
-console.log('Answer to challenge one:', total);
+console.log("Answer to challenge one:", total);
+
+// Challenge two
+
+const totalsArray = []
+
+// Add all our totals to an array so we can itterate over each
+Object.keys(directories).forEach((key) => {
+  totalsArray.push(directories[key].totals);
+});
+
+/* I got the required space number by changing line 33 above so that all 
+children nodes that have been counted already get zeroed out so I could get 
+the total amount of space my device is taking up. I have changed line 33 
+back so challenge 1 still shows the correct answer */ 
+
+// Calculation 300k - (700k - total amount space taken up)
+let requiredSpace = 1272621
+
+// Find the number in our array of directories that is closed to our required space
+const closest = totalsArray.reduce((a, b) => {
+  return Math.abs(b - requiredSpace) < Math.abs(a - requiredSpace) ? b : a;
+});
+
+console.log('Answer to challenge two:', closest)
