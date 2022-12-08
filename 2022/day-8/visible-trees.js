@@ -33,7 +33,7 @@ for (let y = 0; y < splitTrees.length; y++) {
     }
 
     /* Now check each individual node left of our node, if any 
-    are greater set our next check to false */ 
+    are greater set our next check to false */
     for (let i = 0; i < y; i++) {
       if (splitTrees[x][i] >= splitTrees[x][y]) {
         checkArr[1] = 0;
@@ -42,7 +42,7 @@ for (let y = 0; y < splitTrees.length; y++) {
     }
 
     /* Now check each individual node right of our node, if any 
-    are greater set our next check to false */ 
+    are greater set our next check to false */
     for (let i = splitTrees.length - 1; i > y; i--) {
       if (splitTrees[x][i] >= splitTrees[x][y]) {
         checkArr[2] = 0;
@@ -51,7 +51,7 @@ for (let y = 0; y < splitTrees.length; y++) {
     }
 
     /* Now check each individual node above our node, if any 
-    are greater set our next check to false */ 
+    are greater set our next check to false */
     for (let i = 0; i < x; i++) {
       if (splitTrees[i][y] >= splitTrees[x][y]) {
         checkArr[3] = 0;
@@ -60,7 +60,7 @@ for (let y = 0; y < splitTrees.length; y++) {
     }
 
     /* Now check each individual node below our node, if any 
-    are greater set our next check to false */ 
+    are greater set our next check to false */
     for (let i = splitTrees.length - 1; i > x; i--) {
       if (splitTrees[i][y] >= splitTrees[x][y]) {
         checkArr[4] = 0;
@@ -75,6 +75,59 @@ for (let y = 0; y < splitTrees.length; y++) {
   }
 }
 
-console.log('Answer to first challenge:', visibleTrees);
+console.log("Answer to first challenge:", visibleTrees);
 
 // Challenge two
+
+const scores = [];
+
+// Iterate through each grid in our grid array
+for (let y = 0; y < splitTrees.length; y++) {
+  // Iterate through each individual node in our current grid
+  for (let x = 0; x < splitTrees[y].length; x++) {
+    /* Set up variables for counting the amount of visible trees
+    left, right, above and below the node we are iterating */
+    let left = 0;
+    let right = 0;
+    let top = 0;
+    let bottom = 0;
+
+    // Get all the visible trees on left of the node
+    for (let i = x - 1; i >= 0; i--) {
+      left++;
+      if (splitTrees[y][i] >= splitTrees[y][x]) {
+        break;
+      }
+    }
+
+    // Get all visible trees on the right of the node
+    for (let i = x + 1; i < splitTrees[y].length; i++) {
+      right++;
+      if (splitTrees[y][i] >= splitTrees[y][x]) {
+        break;
+      }
+    }
+
+    // Get all visible trees above the node
+    for (let i = y - 1; i >= 0; i--){
+      top++;
+      if (splitTrees[i][x] >= splitTrees[y][x]) {
+        break;
+      }
+    }
+
+    // Get all visible trees below the node
+    for (let i = y + 1; i < splitTrees.length; i++) {
+      bottom++;
+      if (splitTrees[i][x] >= splitTrees[y][x]) {
+        break;
+      }
+    }
+
+    // Add up our total and push to our scores array
+    let total = top * left * right * bottom;
+    scores.push(total);
+  }
+}
+
+console.log('Answer to challenge two:', Math.max(...scores));
