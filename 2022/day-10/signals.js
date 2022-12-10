@@ -65,42 +65,42 @@ const checkPixel = () => {
     if (rowCyc == xx || rowCyc + 1 == xx || rowCyc - 1 == xx) {
       pixels[0].push("#");
     } else {
-      pixels[0].push(".");
+      pixels[0].push(" ");
     }
   } else if (cyc >= 41 && cyc <= 80) {
     rowCyc = cyc - 41;
     if (rowCyc == xx || rowCyc + 1 == xx || rowCyc - 1 == xx) {
       pixels[1].push("#");
     } else {
-      pixels[1].push(".");
+      pixels[1].push(" ");
     }
   } else if (cyc >= 81 && cyc <= 120) {
     rowCyc = cyc - 81;
     if (rowCyc == xx || rowCyc + 1 == xx || rowCyc - 1 == xx) {
       pixels[2].push("#");
     } else {
-      pixels[2].push(".");
+      pixels[2].push(" ");
     }
   } else if (cyc >= 121 && cyc <= 160) {
     rowCyc = cyc - 121;
     if (rowCyc == xx || rowCyc + 1 == xx || rowCyc - 1 == xx) {
       pixels[3].push("#");
     } else {
-      pixels[3].push(".");
+      pixels[3].push(" ");
     }
   } else if (cyc >= 161 && cyc <= 200) {
     rowCyc = cyc - 161;
     if (rowCyc == xx || rowCyc + 1 == xx || rowCyc - 1 == xx) {
       pixels[4].push("#");
     } else {
-      pixels[4].push(".");
+      pixels[4].push(" ");
     }
   } else if (cyc >= 201 && cyc <= 240) {
     rowCyc = cyc - 201;
     if (rowCyc == xx || rowCyc + 1 == xx || rowCyc - 1 == xx) {
       pixels[5].push("#");
     } else {
-      pixels[5].push(".");
+      pixels[5].push(" ");
     }
   }
 };
