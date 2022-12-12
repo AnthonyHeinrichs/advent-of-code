@@ -55,17 +55,18 @@ function shortestPath(input, challenge) {
       steps,
     } = queue.shift();
 
-    // Check to make sure we have not already visited this node
+    // Check if nodes exist in our visited array for first time
     if (visited[x]?.[y]) {
       continue;
     }
 
     /* If the current node we are visiting is the same as our 'end' node at 'E',
-    return the steps taken to get ot this node*/
+    return the steps taken to get to this node*/
     if (x === end[0] && y === end[1]) {
       return steps;
     }
 
+    // Iterate over our moves array to find all valid moves for current node
     for (const [mx, my] of moves) {
       if (
         /* Here we want to compare our current node to the 
@@ -79,7 +80,7 @@ function shortestPath(input, challenge) {
         // Check if we have already visited this node before
         visited[x + mx]?.[y + my]
       ) {
-        /* Any nodes that don't get filtered by our restraints gets 
+        /* Any nodes that get filtered by our restraints do not get 
         pushed to our queue*/
         continue;
       }
