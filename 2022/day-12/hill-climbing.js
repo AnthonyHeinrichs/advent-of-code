@@ -25,7 +25,7 @@ function shortestPath(input, challenge) {
     // and then by '' to get each char
     line.split('').map((char, y) => {
       /* For the first challenge we are searching for the 'S' for our
-      starting node */
+      starting node, for the second we check any char with the value a */
       if (char === 'S' || (challenge === 2 && char === 'a')) {
         // Our elevation for the starting node should always be 0
         ele = 0;
