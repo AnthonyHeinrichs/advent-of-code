@@ -1,12 +1,8 @@
 // Pull in our data from our text file and parse it
-const { doesNotMatch } = require("assert");
 const fs = require("fs");
 const path = require("path");
 const filePath = path.join(__dirname, "./data/input.txt");
 const input = fs.readFileSync(filePath, "utf8");
-
-/* 498,4 -> 498,6 -> 496,6
-503,4 -> 502,4 -> 502,9 -> 494,9 */
 
 const structure = [];
 
@@ -125,3 +121,69 @@ const dropSand = () => {
 };
 
 console.log('Answer to challenge one:', dropSand());
+
+// Challenge two (Takes way to long to run, I need to come back to this challenge and optmize it)
+
+const chall2Map = structure.filter(((t = {}), (a) => !(t[a] = a in t)));
+for (let i = 0; i < 1000; i++) {
+  chall2Map.push([i, 164])
+}
+
+const chall2Exists = (x, y) => {
+  const checkMap = JSON.stringify(chall2Map);
+  const coordinates = JSON.stringify([x, y]);
+
+  if (checkMap.includes(coordinates)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+// Drop our sand down the map
+const dropSandWithFloor = () => {
+  /* While the y coordinates never go higher than 161,
+  if they do, we know the sand fell off the side of the map*/
+  let sand = 0;
+  let x = 500;
+  let y = 0;
+  let top = false
+
+  while (!top) {
+    y++;
+    // If we find an existing node
+    if (chall2Exists(x, y)) {
+      // If left side and right side exists, add sand above and start over
+      if (chall2Exists(x - 1, y) && chall2Exists(x + 1, y)) {
+        chall2Map.push([x, y - 1]);
+        sand++;
+
+        console.log([x, y - 1])
+
+        if ((chall2Exists(1, 500))) {
+          top = true;
+          continue
+        } else {
+          x = 500;
+          y = 0;
+          continue;
+        }
+      }
+      // If left side does not exist
+      if (!chall2Exists(x - 1, y)) {
+        // Go one step down and to the left
+        x--;
+        continue
+      }
+      // If left side does exist
+      if (chall2Exists(x - 1, y)) {
+        // Go one step down and to the right
+        x++;
+        continue
+      }
+    }
+  }
+  return sand;
+};
+
+console.log('Answer to two:', dropSandWithFloor());
