@@ -98,3 +98,53 @@ for (let x = min; x <= max; x++) {
 }
 
 console.log("Answer to challenge one:", cannotContainBeacon);
+
+// Challenge two
+
+let negLines = [];
+let posLines = [];
+
+/* Got some help with this equation but essentially we need to find the
+positive and negative lines of each senosrs so we can go through
+them each and determine if the distances between them are at most
+1, then we know the only possible location of our beacon signal */
+for (let i = 0; i < sensors.length; i++) {
+  let s = sensors;
+  let d = distances;
+
+  negLines.push(s[i][0] + s[i][1] - d[i]);
+  negLines.push(s[i][0] + s[i][1] + d[i]);
+  posLines.push(s[i][0] - s[i][1] - d[i])
+  posLines.push(s[i][0] - s[i][1] + d[i]);
+}
+
+let positive = 0;
+let negative = 0;
+
+// Iterating through each positive line and negative line
+for (let i = 0; i + 1 < positions.length * 5; i++) {
+  for (let x = 0; x < posLines.length; x++) {
+    let a = posLines[i];
+    let b = posLines[x];
+
+    /* Checking the difference between the current positive line against
+    all other positive lines */
+    if (Math.abs(a - b) == 2) {
+      positive = Math.min(a, b) + 1;
+    }
+
+    a = negLines[i];
+    b = negLines[x];
+
+    /* Checking the difference between current negative line and
+    all other negative lines */
+    if (Math.abs(a - b) == 2) {
+      negative = Math.min(a, b) + 1;
+    }
+  }
+}
+
+let x = Math.floor((positive + negative)/2);
+let y = Math.floor((negative - positive)/2);
+
+console.log('Answer to challenge two:', x * 4000000 + y);
