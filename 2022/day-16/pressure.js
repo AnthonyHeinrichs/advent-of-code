@@ -1,3 +1,5 @@
+// Did not finish day 16 or day 17, would like to come back to them eventually.
+
 // Pull in our data from our text file and parse it
 const fs = require("fs");
 const path = require("path");
