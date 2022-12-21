@@ -14,6 +14,7 @@ for (let i = 0; i < data.length; i++) {
 
 const len = nums.length
 
+// Function that swaps two elements by element index in passed arr
 const swapNums = (nums, a, b) => {
   let numA = nums[a]
   let numB = nums[b]
@@ -43,17 +44,20 @@ const swapNums = (nums, a, b) => {
 
 let swappedNums = nums
 
+// Iterating through the entire array
 for (let i = 0; i < len; i++) {
   let xIndex = 0;
+
+  // Getting the original number at our current index
   for (let x = 0; x < len; x++) {
     if (swappedNums[x][0] == i) {
       break;
     }
     xIndex++;
   }
-
+  // Getting the value of that number
   const x = swappedNums[xIndex][1];
-
+  // Passing to our swap array function
   if (x < 0) {
     let currentIndex = xIndex;
     for (let i = 0; i > x; i--) {
@@ -66,7 +70,7 @@ for (let i = 0; i < len; i++) {
     }
     continue;
   }
-
+  // Passing to our swap array function
   if (x > 0) {
     let currentIndex = xIndex;
     for (let i = 0; i < x; i++) {
