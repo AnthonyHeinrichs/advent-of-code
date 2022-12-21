@@ -42,8 +42,8 @@ console.log("Answer to challenge one:", findRoot("root"));
 
 // Challenge two
 
-/* Recursive function that finds the final number for root by
-recursively passing the object name until a number is returned*/
+/* Recursive function that finds the two sides to compare by
+recursively passing the object name until we get both sides*/
 const findMatch = (line) => {
   // If hit 'humn' just convert to an expression symbol (x), add to our exp string
   if (line == "humn") {
